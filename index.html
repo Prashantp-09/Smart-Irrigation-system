@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Irrigation System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-tint"></i>
+                <h1>Smart Irrigation</h1>
+            </div>
+            <div class="location-selector">
+                <button class="geo-btn active" id="geoBtn" title="Live Location - Click to refresh">
+                    <i class="fas fa-crosshairs"></i>
+                </button>
+                <select id="citySelect">
+                    <option value="">Select City</option>
+                    <option value="New York">New York</option>
+                    <option value="London">London</option>
+                    <option value="Tokyo">Tokyo</option>
+                    <option value="Sydney">Sydney</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Paris">Paris</option>
+                    <option value="Dubai">Dubai</option>
+                    <option value="Singapore">Singapore</option>
+                </select>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Current Weather Section -->
+            <section class="weather-section">
+                <div class="current-weather">
+                    <div class="weather-main">
+                        <div class="weather-icon" id="weatherIcon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <div class="temperature">
+                            <span id="temp">--</span>
+                            <span class="unit">°C</span>
+                        </div>
+                        <div class="weather-desc" id="weatherDesc">Loading...</div>
+                        <div class="location" id="locationName">Detecting location...</div>
+                    </div>
+                    <div class="weather-details">
+                        <div class="detail-item">
+                            <i class="fas fa-water"></i>
+                            <span class="label">Humidity</span>
+                            <span class="value" id="humidity">--%</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-wind"></i>
+                            <span class="label">Wind</span>
+                            <span class="value" id="wind">-- m/s</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-cloud-rain"></i>
+                            <span class="label">Rainfall</span>
+                            <span class="value" id="rainfall">-- mm</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Irrigation Status Section -->
+            <section class="status-section">
+                <div class="irrigation-status">
+                    <div class="status-header">
+                        <h2><i class="fas fa-sprinkler"></i> Irrigation Status</h2>
+                        <div class="status-indicator" id="statusIndicator">
+                            <span class="status-dot"></span>
+                            <span class="status-text" id="statusText">Calculating...</span>
+                        </div>
+                    </div>
+                    
+                    <div class="status-grid">
+                        <div class="status-card">
+                            <div class="card-icon blue">
+                                <i class="fas fa-tint"></i>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-label">Soil Moisture</span>
+                                <span class="card-value" id="soilMoisture">--%</span>
+                            </div>
+                            <div class="moisture-bar">
+                                <div class="moisture-fill" id="moistureFill"></div>
+                            </div>
+                        </div>
+
+                        <div class="status-card">
+                            <div class="card-icon green">
+                                <i class="fas fa-cloud-showers-heavy"></i>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-label">Rain Chance</span>
+                                <span class="card-value" id="rainChance">--%</span>
+                            </div>
+                        </div>
+
+                        <div class="status-card">
+                            <div class="card-icon orange">
+                                <i class="fas fa-temperature-high"></i>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-label">Evapotranspiration</span>
+                                <span class="card-value" id="evapotranspiration">-- mm/day</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recommendation Section -->
+            <section class="recommendation-section">
+                <div class="recommendation-card">
+                    <div class="rec-header">
+                        <i class="fas fa-lightbulb"></i>
+                        <h2>Smart Recommendation</h2>
+                    </div>
+                    <div class="rec-content" id="recommendation">
+                        <div class="rec-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <p class="rec-text">Analyzing weather conditions...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Control Panel -->
+            <section class="control-section">
+                <div class="control-panel">
+                    <h2><i class="fas fa-sliders-h"></i> Manual Control</h2>
+                    <div class="control-buttons">
+                        <button class="control-btn on" id="irrigationOn">
+                            <i class="fas fa-toggle-on"></i> Turn On
+                        </button>
+                        <button class="control-btn off" id="irrigationOff">
+                            <i class="fas fa-toggle-off"></i> Turn Off
+                        </button>
+                    </div>
+                    <div class="schedule-info">
+                        <p><i class="fas fa-clock"></i> Last irrigation: <span id="lastIrrigation">--</span></p>
+                        <p><i class="fas fa-history"></i> Next suggested: <span id="nextIrrigation">--</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7-Day Forecast -->
+            <section class="forecast-section">
+                <h2><i class="fas fa-calendar-week"></i> 7-Day Forecast</h2>
+                <div class="forecast-grid" id="forecastGrid">
+                    <!-- Forecast cards will be inserted here by JavaScript -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Smart Irrigation System &copy; 2024 | Powered by OpenWeatherMap API</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
